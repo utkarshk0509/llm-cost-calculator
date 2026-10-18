@@ -1,6 +1,8 @@
 from pathlib import Path
+
 import tiktoken
-from src.pricing import PRICING_REGISTRY, ModelPricing
+
+from src.pricing import ModelPricing
 
 VALID_EXTENSIONS = {".txt", ".md", ".py", ".json", ".csv", ".sql", ".js", ".html"}
 

@@ -1,19 +1,20 @@
 from pathlib import Path
-from typing import Optional
+
 import typer
 from rich.console import Console
-from rich.table import Table
 from rich.panel import Panel
+from rich.table import Table
+
 from src.pricing import PRICING_REGISTRY
-from src.tokenizer import count_tokens, load_text_from_path, calculate_cost
+from src.tokenizer import calculate_cost, count_tokens, load_text_from_path
 
 app = typer.Typer(help="Estimate LLM token counts and API costs across major providers.")
 console = Console()
 
 @app.command()
 def estimate(
-    prompt:Optional[str] = typer.Option(None, "--prompt", "-p", help="Direct text prompt to analyze."),
-    path:Optional[Path] = typer.Option(None, "--path", "-f", help="Path to a file or directory to scan."),
+    prompt:str | None = typer.Option(None, "--prompt", "-p", help="Direct text prompt to analyze."),
+    path:Path | None = typer.Option(None, "--path", "-f", help="Path to a file or directory to scan."),
     output_tokens:int = typer.Option(500, "--output", "-o", help="Expected completion output tokens."),
     calls_per_day:int = typer.Option(100, "--calls", "-c", help="Number of daily API calls to project monthly cost."),
 ):

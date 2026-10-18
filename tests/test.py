@@ -1,5 +1,6 @@
 from src.pricing import ModelPricing
-from src.tokenizer import count_tokens, calculate_cost
+from src.tokenizer import calculate_cost, count_tokens
+
 
 def test_token_count_non_empty():
     tokens = count_tokens("Hello world, testing LLM token counting!")
