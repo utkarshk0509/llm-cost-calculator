@@ -12,10 +12,13 @@ dependencies = [
     "typer",
     "rich",
     "tiktoken",
+    "fastapi",
+    "uvicorn",
 ]
 
 [project.scripts]
 llm-cost = "src.cli:app"
+llm-cost-server = "src.server:start"
 
 [tool.setuptools.packages.find]
 where = ["."]
